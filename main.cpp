@@ -1,45 +1,32 @@
 #include <iostream>
 #include "linked-list.hpp"
 
-void printList(node *head)
-{
-    node *temp = head;
-
-    while (temp != nullptr)
-    {
-        printf("%d\n", temp->value);
-        temp = temp->next;
-    }
-
-    printf("\n");
-}
-
 int main()
 {
-    node n1, n2, n3;
-    node *head;
+    LinkedList list;
 
-    n1.value = 10;
-    n2.value = 20;
-    n3.value = 30;
+    list.pushBack(44);
+    list.pushBack(1);
+    list.pushBack(5);
+    list.pushBack(-4);
+    list.pushBack(0);
+    list.pushBack(2);
 
-    head = &n1;
+    list.printList();
 
-    n1.next = &n3;
-    n3.next = &n2;
+    bool test = list.modify(2, 100);
 
-    node n4;
+    list.printList();
 
-    n4.value = 40;
-    n2.next = &n4;
+    // std::cout << "list[0]: " << list.get(2) << std::endl;
 
-    n3.next = nullptr;
-    n1.next = &n2;
+    // std::cout << "head: " << (list.getHead()) << std::endl;
+    // std::cout << "tail: " << (list.getTail()) << std::endl;
 
-    n1.next = nullptr;
-    head = &n2;
+    std::cout << "head: " << (list.getHead()->value) << std::endl;
+    std::cout << "tail: " << (list.getTail()->value) << std::endl;
 
-    printList(head);
+    std::cout << "test: " << test << std::endl;
 
     return 0;
 }
