@@ -4,7 +4,7 @@ output:
 	g++ -std=c++11 main.cpp -o output
 
 run:
-	./outputw
+	./output
 
 clean: 
 	rm output
