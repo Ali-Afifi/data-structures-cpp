@@ -17,6 +17,13 @@ private:
 public:
     LinkedList() {}
 
+    LinkedList(int *arr, int size)
+    {
+        for (int i = 0; i < size; i++) {
+            this->pushBack(arr[i]);
+        }
+    }
+
     LinkedList(Node *head, int size)
     {
         this->head = head;
@@ -275,7 +282,7 @@ public:
             }
 
             temp->value = num;
-            
+
             return true;
         }
     }
@@ -308,6 +315,27 @@ public:
         std::cout << " ]" << std::endl;
         std::cout << "size: " << this->size << std::endl;
         std::cout << std::endl;
+    }
+
+    void reverse() {
+        if (size == 0 || size == 1) {
+            return;
+        } else {
+            Node *tempNode, *prevNode, *nextNode;
+            prevNode = this->head;
+            tempNode = this->head->next;
+            while (tempNode != nullptr) {
+                nextNode = tempNode->next;
+                tempNode->next = prevNode;
+                prevNode = tempNode;
+                tempNode = nextNode;
+            }
+
+            tempNode = this->head;
+            tempNode->next = nullptr;
+            this->head = this->tail;
+            this->tail = tempNode;
+        }
     }
 };
 
